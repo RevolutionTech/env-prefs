@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Aliases
+alias ls="ls -A"
+alias ll="ls -AlF"
+alias pname="ps aux | grep"
+alias wai="clear; pwd; ls"
+
+# Functions
+function cd () {
+	builtin cd "$@";
+	
+	# Rename the current tab
+	THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
+	printf "\e]1;$THISDIR\a";
+}
+
+# TODO: rm and create ln (consider different options to ln)
+# function mvln () {
+	
+# }
+
+# TODO: do a better job handling additional options to git
+# TODO: consider adding --no-merge
+function git () {
+	# Add custom parameters to git log
+	if [ "$1" == "log" ]; then
+		/usr/bin/git "$@" --pretty=format:'%x09%H (%cr)%x09[%an]%x09%s' --graph;
+	else
+		/usr/bin/git "$@";
+	fi
+}
