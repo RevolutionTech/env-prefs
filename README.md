@@ -1,6 +1,11 @@
 Environment Preferences
 ==========
+
 This is a place where I keep bash aliases, custom functions, and other preferences so that I can easily use keep them up-to-date across different environments.
+
+To get started, begin by cloning this repo:
+
+`cd ~/; git clone https://github.com/RevolutionTech/env-prefs.git`
 
 ---
 
