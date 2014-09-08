@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Aliases
+### Aliases ###
 alias ls="ls -A"
 alias ll="ls -AlF"
 alias pname="ps aux | grep"
 alias wai="clear; pwd; ls"
 
-# Functions
+### Functions ###
 function cd () {
 	builtin cd "$@";
 	
@@ -14,6 +14,23 @@ function cd () {
 	THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
 	printf "\e]1;$THISDIR\a";
 }
+
+# Functions for Mac only
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	# Activate the Terminal
+	function tActivate {
+		osascript -e 'tell application "Terminal" to activate' "$@"
+	}
+	# Open a New Tab
+	function tNewtab {
+		tActivate -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down' "$@"
+	}
+	# Perform a given command in a New Tab in the Terminal
+	function tCommand {
+		FULLCMD=$(echo 'tell application "Terminal" to do script "'$1'" in selected tab of the front window')
+		tNewtab -e "$FULLCMD"
+	}
+fi
 
 # TODO: rm and create ln (consider different options to ln)
 # function mvln () {
