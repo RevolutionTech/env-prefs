@@ -1,5 +1,11 @@
 #!/bin/bash
 
+### Source virtualenvwrapper ###
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+	export WORKON_HOME=$HOME/.virtualenvs
+	source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 ### Add git branch to PS1 ###
 gitps1=true
 if [[ -f /etc/bash_completion.d/git ]]; then
