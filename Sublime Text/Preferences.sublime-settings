@@ -1,13 +1,13 @@
 {
-	"theme": "Spacegray Eighties.sublime-theme",
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
 	"font_size": 12,
-
-	// Columns in which to display vertical rulers
-    "rulers": [80],
-
 	"ignored_packages":
 	[
 		"Vintage"
-	]
+	],
+	"rulers":
+	[
+		80
+	],
+	"theme": "Spacegray Eighties.sublime-theme"
 }
