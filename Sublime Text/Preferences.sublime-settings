@@ -1,12 +1,13 @@
 {
-	"color_scheme": "Packages/User/Color Highlighter/themes/Monokai.tmTheme",
-	"font_size": 12,
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"draw_white_space": "all",
 	"ignored_packages":
 	[
 		"Vintage"
 	],
 	"rulers":
 	[
+		72,
 		80
 	],
 	"theme": "Spacegray Eighties.sublime-theme"
