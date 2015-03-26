@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Theme - itg.flat/itg.dark.tmTheme",
 	"draw_white_space": "all",
 	"font_size": 12,
 	"ignored_packages":
@@ -11,6 +11,6 @@
 		72,
 		80
 	],
-	"theme": "Spacegray Eighties.sublime-theme",
+	"theme": "itg.flat.dark.sublime-theme",
 	"translate_tabs_to_spaces": true
 }
