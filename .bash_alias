@@ -39,6 +39,7 @@ function cd () {
     THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
     printf "\e]1;$THISDIR\a";
 }
+
 function killname () {
     # Find the PIDs that match
     ps aux | grep $1 | grep -v grep | awk '{ print $2 }' | while read line; do
@@ -64,12 +65,19 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     }
 fi
 
-# TODO: do a better job handling additional options to git
-# TODO: consider adding --no-merge
+### Git Aliases ###
+# git trash: stash stage and immediately drop it
+git config --global alias.trash '!'"f() { git stash; git stash drop; }; f;"
+
+# Overriding git function required to change behaviour of built-in git functions
 function git () {
-    # Add custom parameters to git log
+    # Add custom parameters to git log and branch
+    # TODO: do a better job handling additional options to git
+    # TODO: consider adding --no-merge
     if [ "$1" == "log" ]; then
         /usr/bin/git "$@" --pretty=format:'%x09%H (%cr)%x09[%an]%x09%s' --graph;
+    elif [ "$1" == "branch" ]; then
+        /usr/bin/git "$@" -vv;
     else
         /usr/bin/git "$@";
     fi
