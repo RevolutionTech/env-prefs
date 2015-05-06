@@ -39,6 +39,13 @@ function cd () {
     THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
     printf "\e]1;$THISDIR\a";
 }
+function killname () {
+    # Find the PIDs that match
+    ps aux | grep $1 | grep -v grep | awk '{ print $2 }' | while read line; do
+        # Kill each PID
+        sudo kill -9 $line;
+    done
+}
 
 # Functions for Mac only
 if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -56,11 +63,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         tNewtab -e "$FULLCMD"
     }
 fi
-
-# TODO: rm and create ln (consider different options to ln)
-# function mvln () {
-    
-# }
 
 # TODO: do a better job handling additional options to git
 # TODO: consider adding --no-merge
