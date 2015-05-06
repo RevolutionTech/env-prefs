@@ -2,27 +2,27 @@
 
 ### Source virtualenvwrapper ###
 if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-	export WORKON_HOME=$HOME/.virtualenvs
-	source /usr/local/bin/virtualenvwrapper.sh
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
 ### Add git branch to PS1 ###
 gitps1=true
 if [[ -f /etc/bash_completion.d/git ]]; then
-	source /etc/bash_completion.d/git
+    source /etc/bash_completion.d/git
 elif [[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]]; then
-	source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+    source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
 elif [[ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]]; then
-	source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
+    source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
 else
-	gitps1=false
+    gitps1=false
 fi
 if [[ "$gitps1" == true ]]; then
-	if [[ "$OSTYPE" == "darwin"* ]]; then
-		PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\\033[0m\]"
-	else
-		PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\033[0m\]"
-	fi
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\\033[0m\]"
+    else
+        PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\033[0m\]"
+    fi
 fi
 
 ### Aliases ###
@@ -33,42 +33,42 @@ alias wai="clear; pwd; ls"
 
 ### Functions ###
 function cd () {
-	builtin cd "$@";
-	
-	# Rename the current tab
-	THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
-	printf "\e]1;$THISDIR\a";
+    builtin cd "$@";
+
+    # Rename the current tab
+    THISDIR=$(echo $PWD | awk -F "/" '{print $NF}');
+    printf "\e]1;$THISDIR\a";
 }
 
 # Functions for Mac only
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	# Activate the Terminal
-	function tActivate {
-		osascript -e 'tell application "Terminal" to activate' "$@"
-	}
-	# Open a New Tab
-	function tNewtab {
-		tActivate -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down' "$@"
-	}
-	# Perform a given command in a New Tab in the Terminal
-	function tCommand {
-		FULLCMD=$(echo 'tell application "Terminal" to do script "'$1'" in selected tab of the front window')
-		tNewtab -e "$FULLCMD"
-	}
+    # Activate the Terminal
+    function tActivate {
+        osascript -e 'tell application "Terminal" to activate' "$@"
+    }
+    # Open a New Tab
+    function tNewtab {
+        tActivate -e 'tell application "System Events" to tell process "Terminal" to keystroke "t" using command down' "$@"
+    }
+    # Perform a given command in a New Tab in the Terminal
+    function tCommand {
+        FULLCMD=$(echo 'tell application "Terminal" to do script "'$1'" in selected tab of the front window')
+        tNewtab -e "$FULLCMD"
+    }
 fi
 
 # TODO: rm and create ln (consider different options to ln)
 # function mvln () {
-	
+    
 # }
 
 # TODO: do a better job handling additional options to git
 # TODO: consider adding --no-merge
 function git () {
-	# Add custom parameters to git log
-	if [ "$1" == "log" ]; then
-		/usr/bin/git "$@" --pretty=format:'%x09%H (%cr)%x09[%an]%x09%s' --graph;
-	else
-		/usr/bin/git "$@";
-	fi
+    # Add custom parameters to git log
+    if [ "$1" == "log" ]; then
+        /usr/bin/git "$@" --pretty=format:'%x09%H (%cr)%x09[%an]%x09%s' --graph;
+    else
+        /usr/bin/git "$@";
+    fi
 }
