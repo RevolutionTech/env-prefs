@@ -79,7 +79,7 @@ function git () {
     # TODO: do a better job handling additional options to git
     # TODO: consider adding --no-merge
     if [ "$1" == "log" ]; then
-        /usr/bin/git "$@" --pretty=format:'%x09%H (%cr)%x09[%an]%x09%s' --graph;
+        /usr/bin/git "$@" --pretty=format:'%H | %Cgreen%<(15,trunc)%cr%Creset | %Cred%<(15,trunc)%an%Creset | %<(75,trunc)%s';
     elif [ "$1" == "branch" ]; then
         /usr/bin/git "$@" -vv;
     else
