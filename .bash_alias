@@ -69,20 +69,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     }
 fi
 
-### Git Aliases ###
+### Apply Git Config ###
+git config --global format.pretty "format:'%C(dim)%H%C(reset) | %C(yellow)%<(15,trunc)%an%C(reset) | %<(75,trunc)%s | %C(cyan)%<(15,trunc)%cr%C(reset)'"
 # git trash: stash stage and immediately drop it
 git config --global alias.trash '!'"f() { git stash; git stash drop; }; f;"
-
-# Overriding git function required to change behaviour of built-in git functions
-function git () {
-    # Add custom parameters to git log and branch
-    # TODO: do a better job handling additional options to git
-    # TODO: consider adding --no-merge
-    if [ "$1" == "log" ]; then
-        /usr/bin/git "$@" --pretty=format:'%C(dim)%H%C(reset) | %C(yellow)%<(15,trunc)%an%C(reset) | %<(75,trunc)%s | %C(cyan)%<(15,trunc)%cr%C(reset)';
-    elif [ "$1" == "branch" ]; then
-        /usr/bin/git "$@" -vv;
-    else
-        /usr/bin/git "$@";
-    fi
-}
