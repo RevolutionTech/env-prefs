@@ -52,6 +52,9 @@ function killname () {
     done
 }
 
+function encrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1" -out "$1".enc; }
+function decrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1".enc -out "$1" -d; }
+
 # Functions for Mac only
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Activate the Terminal
