@@ -19,6 +19,18 @@ Then source the shell startup file:
 
 ---
 
+To add a user-wide `.pylintrc` configuration file, first install the custom checkers:
+
+`cd ~/; git clone git@github.com:infoscout/isc-style-guide.git`
+
+Then, add `~/isc-style-guide/isc_style_guide/checkers` to the `PYTHONPATH` environment variable used by your editor.
+
+Finally, symlink the configuration file:
+
+`ln -s ~/env-prefs/.pylintrc ~/`
+
+---
+
 To add custom Sublime settings, first navigate to the directory where `Preferences.sublime-settings` is stored. On a Mac, it might be:
 
 `cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/`
