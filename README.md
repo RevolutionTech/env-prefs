@@ -29,18 +29,4 @@ Finally, symlink the configuration file:
 
 `ln -s ~/env-prefs/.pylintrc ~/`
 
----
-
-To add custom Sublime settings, first navigate to the directory where `Preferences.sublime-settings` is stored. On a Mac, it might be:
-
-`cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/User/`
-
-Then remove and symlink the settings file:
-
-`rm ./Preferences.sublime-settings`
-
-`ln -s ~/env-prefs/Sublime\ Text/Preferences.sublime-settings ./Preferences.sublime-settings`
-
----
-
 Feel free to contribute by adding your own helpful aliases and custom functions that others may find useful. Please note that I use this repo in conjunction with other private repos so that aliases or configurations that are strictly used in specific environments are not included here.
