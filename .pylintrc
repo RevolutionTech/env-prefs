@@ -2,7 +2,7 @@
 
 # List of plugins (as comma separated values of python modules names) to load,
 # usually to register additional checkers.
-load-plugins=trailing_comma
+load-plugins=trailing_comma,django_redundant_all
 
 
 [MESSAGES CONTROL]
@@ -24,4 +24,5 @@ disable=all
 # it should appear only once). See also the "--disable" option for examples.
 enable=tuple-missing-trailing-comma,
        multiline-iterable-missing-trailing-comma,
-       inline-iterable-trailing-comma
+       inline-iterable-trailing-comma,
+       django-all-redundant
