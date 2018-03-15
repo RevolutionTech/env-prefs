@@ -22,7 +22,7 @@ Then source the shell startup file:
 To add a user-wide `.pylintrc` configuration file, first install the custom checkers:
 
 ```
-$ pip install git+ssh://git@github.com/davidszotten/sentry-stack-checker.git
+$ pip install sentry-stack-checker
 $ cd ~/
 $ git clone git@github.com:infoscout/isc-style-guide.git
 ```
