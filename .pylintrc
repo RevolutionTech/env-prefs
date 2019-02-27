@@ -28,3 +28,9 @@ enable=exc-log-change-to-exc-info,
        multiline-iterable-missing-trailing-comma,
        inline-iterable-trailing-comma,
        django-all-redundant
+
+
+[SENTRY-STACK-CHECKER]
+
+# List of logging methods that should generate messages
+report-loggers=warning,error
