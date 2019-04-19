@@ -78,6 +78,8 @@ git config --global format.pretty "format:%C(dim)%h%C(reset) | %C(yellow)%<(15,t
 git config --global alias.trash '!'"f() { git stash; git stash drop; }; f;"
 
 ### Git Branch Autocomplete (requires git-completion to be installed)
-if [ -f ~/.git-completion.bash ]; then
-    . ~/.git-completion.bash
-fi
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
+    # if not found in /usr/local/etc, try the brew --prefix location
+    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
+        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
+}
