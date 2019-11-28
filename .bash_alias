@@ -10,24 +10,13 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-### Add git branch to PS1 ###
-gitps1=true
-if [[ -f /etc/bash_completion.d/git ]]; then
-    source /etc/bash_completion.d/git
-elif [[ -f /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh ]]; then
-    source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-elif [[ -f /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh ]]; then
-    source /Applications/Xcode.app/Contents/Developer/usr/share/git-core/git-prompt.sh
-else
-    gitps1=false
-fi
-if [[ "$gitps1" == true ]]; then
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-        PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\\033[0m\]"
-    else
-        PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\[\033[1;36m\] \u\[\033[32m\]$ \[\033[0m\]"
-    fi
-fi
+### Add git branch to zsh prompt ###
+# https://www.themoderncoder.com/add-git-branch-information-to-your-zsh-prompt/
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats 'on branch %b'
+setopt PROMPT_SUBST
+PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
 ### Aliases ###
 alias ls="ls -A"
