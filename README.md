@@ -16,4 +16,10 @@ Then source the shell startup file:
 
 `source ~/.bashrc`
 
+---
+
+To add a user-wide `.tmux.conf` configuration file, symlink the `.tmux.conf` file here:
+
+`ln -s ~/env-prefs/.tmux.conf ~/`
+
 Feel free to contribute by adding your own helpful aliases and custom functions that others may find useful. Please note that I use this repo in conjunction with other private repos so that aliases or configurations that are strictly used in specific environments are not included here.
