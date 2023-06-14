@@ -8,9 +8,9 @@ To get started, begin by cloning this repo:
 
 ---
 
-To add the aliases and custom functions, add the following to your shell startup file (`~/.bashrc`, `~/.profile`, etc.):
+To add the aliases and custom functions, add the following to your shell startup file (eg. `~/.zshrc`):
 
-`source ~/env-prefs/.bash_alias`
+`source ~/env-prefs/.zshrc`
 
 Then source the shell startup file:
 

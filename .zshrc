@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ### Set default editor to nano (don't judge me...) ###
 export VISUAL=nano
 export EDITOR="$VISUAL"
