@@ -1,7 +1,3 @@
-### Set default editor to nano (don't judge me...) ###
-export VISUAL=nano
-export EDITOR="$VISUAL"
-
 ### Add git branch to zsh prompt ###
 # https://www.themoderncoder.com/add-git-branch-information-to-your-zsh-prompt/
 autoload -Uz vcs_info
@@ -37,8 +33,6 @@ function encrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1" 
 function decrypt_openssl () { openssl aes-256-cbc -k $DECRYPT_PASSWORD -in "$1".enc -out "$1" -d; }
 
 ### Git Branch Autocomplete (requires git-completion to be installed)
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion || {
-    # if not found in /usr/local/etc, try the brew --prefix location
-    [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ] && \
-        . $(brew --prefix)/etc/bash_completion.d/git-completion.bash
-}
+if [ -f /opt/local/etc/profile.d/bash_completion.sh ]; then
+  . /opt/local/etc/profile.d/bash_completion.sh
+fi
