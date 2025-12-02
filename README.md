@@ -28,5 +28,6 @@ Then source the shell startup file:
 To use env-prefs configurations, symlink the configuration files:
 
     ln -s ~/env-prefs/.tmux.conf ~/
+    ln -s ~/env-prefs/.vimrc ~/
 
 Feel free to contribute by adding your own helpful aliases and custom functions that others may find useful. Please note that I use this repo in conjunction with other private repos so that aliases or configurations that are related to private projects are not included here.
